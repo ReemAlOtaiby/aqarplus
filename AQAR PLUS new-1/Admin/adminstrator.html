@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-manage-properties {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-manage-services {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="password"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .btn-update {
+            background-color: #17a2b8;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div class="buttons">
+            <button class="btn-manage-properties" onclick="window.location.href='admin.html'">Manage Properties</button>
+            <button class="btn-manage-services" onclick="window.location.href='getServices.html'">Manage Services</button>
+            <button class="btn-logout" onclick="window.location.href='admin_login.html'">Logout</button>
+        </div>
+        <div class="form-container">
+            <h2>Update Admin Credentials</h2>
+            <form id="updateForm">
+                <input type="text" id="newUsername" placeholder="New Username" required>
+                <input type="password" id="newPassword" placeholder="New Password" required>
+                <button type="submit" class="btn-update">Update Credentials</button>
+            </form>
+            <div id="updateMessage" style="margin-top: 10px;"></div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+
+</body>
+</html>
+

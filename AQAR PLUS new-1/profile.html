@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #E5D3B3;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #D2B48C;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    #profile-info {
+      margin-bottom: 20px;
+    }
+    #profile-info p {
+      margin: 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button[type="submit"],
+    button[type="button"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #8ace8d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover,
+    button[type="button"]:hover {
+      background-color: #b0ffb4;
+    }
+    #logout-btn {
+      margin-top: 15px;
+      background-color: #8B4513;
+    }
+    #logout-btn:hover {
+      background-color: #8B4513;
+    }
+  </style>
+</head>
+<body>
+ 
+  <h1>Manage Profile</h1>
+  <div class="container">
+    <div id="profile-info">
+      <p><strong>Email:</strong> <span id="email"></span></p>
+    </div>
+    <form id="profile-form">
+      <label for="email">New Email:</label>
+      <input type="email" id="email-input" name="email" required>
+      <button type="submit">Update Email</button>
+    </form>
+    <button type="button" id="logout-btn">Logout</button>
+  </div>
+
+  <script>
+     window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://localhost:3017/profile', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          const profileData = await response.json();
+          document.getElementById('email').textContent = profileData.email;
+          document.getElementById('email-input').value = profileData.email;
+        } else {
+          throw new Error('Failed to fetch profile data');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert(error.message || 'Error fetching profile data');
+      }
+    });
+
+    document.getElementById('profile-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const newEmail = document.getElementById('email-input').value;
+
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://localhost:3017/profile', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ email: newEmail })
+        });
+
+        if (response.ok) {
+          alert('Email updated successfully!');
+          document.getElementById('email').textContent = newEmail;
+        } else {
+          const responseData = await response.json();
+          throw new Error(responseData.error || 'Email update failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert(error.message || 'Error updating email');
+      }
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

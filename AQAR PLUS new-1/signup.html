@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e5d3b3;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #d2b48c;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, button, select {
+      margin-bottom: 10px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+   
+  </style>
+</head>
+<body>
+    
+  <div class="container">
+    <h2>Sign Up</h2>
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      
+      <label for="user-role">What type of user you are?</label>
+      <select id="user-role" onchange="togglePaymentMethod()">
+        <option value="">Select User Type</option>
+        <option value="seller">Seller</option>
+        <option value="service-provider">Service Provider</option>
+        <option value="buyer">Buyer</option>
+      </select>
+  
+      <div id="payment-method-container" class="payment-method-container">
+        <label for="payment-method">Payment Method:</label>
+        <select id="payment-method" name="payment-method" required>
+          <option value="">Select Payment Method</option>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+        </select>
+        
+        <div id="credit-card-fields">
+          <input type="text" id="card-number" placeholder="Card Number">
+          <input type="text" id="cardholder" placeholder="Card Holder">
+          <input type="text" id="expiry-date" placeholder="Expiry Date (MM/YY)">
+          <input type="text" id="cvv" placeholder="CVV">
+        </div>
+        
+        <div id="paypal-fields">
+          <input type="email" id="paypal-email" placeholder="PayPal Email">
+        </div>
+      </div>
+      <!-- Add this checkbox before the Sign Up button -->
+<div>
+  <input type="checkbox" id="agreement-checkbox">
+  <label for="agreement-checkbox">I agree to the <a href="policy.html" target="_blank" id="terms-link">terms and conditions</a></label>
+</div>
+
+<button type="submit" id="signup-button" disabled>Sign Up</button>
+    </form>
+    <p id="message"></p>
+    <p>Already registered? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+function togglePaymentMethod() {
+  var userRoleSelect = document.getElementById("user-role");
+  var paymentMethodContainer = document.getElementById("payment-method-container");
+  var creditCardFields = document.getElementById("credit-card-fields");
+  var paypalFields = document.getElementById("paypal-fields");
+  var signupButton = document.getElementById("signup-button");
+  var agreementCheckbox = document.getElementById("agreement-checkbox");
+
+  if (userRoleSelect.value === "seller" || userRoleSelect.value === "service-provider") {
+    paymentMethodContainer.style.display = "block";
+    creditCardFields.style.display = "block";
+    paypalFields.style.display = "none";
+    document.getElementById("payment-method").required = true;
+  } else {
+    paymentMethodContainer.style.display = "none";
+    creditCardFields.style.display = "none";
+    paypalFields.style.display = "none";
+    document.getElementById("payment-method").required = false;
+  }
+
+  // Enable the Sign Up button only if a user role is selected and the agreement checkbox is checked
+  signupButton.disabled = !userRoleSelect.value || !agreementCheckbox.checked;
+}
+
+// Event listener for the agreement checkbox
+document.getElementById("agreement-checkbox").addEventListener('change', function() {
+  var hasVisitedPolicy = localStorage.getItem('hasVisitedPolicy');
+  var signupButton = document.getElementById("signup-button");
+  var userRoleSelect = document.getElementById("user-role");
+
+  if (!hasVisitedPolicy) {
+    alert('Please read the terms and conditions before agreeing.');
+    this.checked = false; // Uncheck the checkbox
+    return;
+  }
+
+  // Enable the Sign Up button only if a user role is selected and the agreement checkbox is checked
+  signupButton.disabled = !this.checked || !userRoleSelect.value;
+});
+
+// Call togglePaymentMethod on page load and when the user role changes
+document.getElementById("user-role").addEventListener('change', togglePaymentMethod);
+window.onload = togglePaymentMethod;
+  </script>
+
+<script>
+  document.getElementById('signup-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+// Password Validation
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;  if (!passwordRegex.test(password)) {
+  alert('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, and one digit.');
+  return;
+}
+
+
+    try {
+      const response = await fetch('http://localhost:3016/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      if (response.ok) {
+        alert('Signed up successfully!');
+        window.location.href = 'login.html'; // Redirect to login page
+      } else {
+        throw new Error('Sign up failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error signing up');
+    }
+  });
+</script>
+</body>
+</html>

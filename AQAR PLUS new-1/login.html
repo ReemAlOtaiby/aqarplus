@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e5d3b3;;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      background-color: #d2b48c;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, button {
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+       
+  <div class="container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p id="message"></p>
+    <p>Not registered yet? <a href="signup.html">Sign Up</a></p>
+    <a href="forgot-password.html">Forgot Password?</a>
+
+  </div>
+<script>
+  document.getElementById('login-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('http://localhost:3017/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const responseData = await response.json();
+      
+      if (response.ok) {
+        const token = responseData.token;
+        // Store token in local storage or cookies
+        localStorage.setItem('token', token);
+        alert('Login successful!');
+        window.location.href = 'home.html'; // Redirect to home page after successful login
+      } else {
+        throw new Error(responseData.error || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert(error.message || 'Error logging in');
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

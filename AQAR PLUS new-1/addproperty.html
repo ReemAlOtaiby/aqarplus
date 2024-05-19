@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Property</title>
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #E5D3B3; }
+
+    .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color:#fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  }
+
+    h1 { text-align: center; }
+   label { font-weight: bold;}
+
+   input[type="text"],
+   input[type="number"],
+   textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; }
+
+   button[type="submit"] {
+    width: 100%;       
+    padding: 10px;
+    background-color: #8B4513;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; }
+
+    button[type="submit"]:hover {
+    background-color: 8B4513;
+    color: #acacac;}
+
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Add Property</h1>
+        <form id="propertyForm">
+            <label for="propertyName">Property Name:</label><br>
+            <input type="text" id="propertyName" name="property_name" required><br>
+            
+            <label for="price">Price: </label><br>
+            <input type="text" id="price" name="price" placeholder="SAR"><br>
+            
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50"></textarea><br>
+            
+            <label for="ownerName">Owner Name:</label><br>
+            <input type="text" id="ownerName" name="owner_name" required><br>
+            
+            <label for="ownerName">Owner Contact:</label><br>
+            <input type="text" id="ownerName" name="owner_name" required><br>
+            
+            <label for="imageUrl">Image:</label><br>
+            <input type="file" id="imageUrl" name="image_url"><br>            
+            <button type="submit">Add Property</button>
+        </form>
+    </div>
+
+
+    <script>
+        document.getElementById("propertyForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            const propertyData = {};
+            formData.forEach((value, key) => {
+                propertyData[key] = value;
+            });
+
+            fetch('http://localhost:3016/add_property', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(propertyData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                document.getElementById("propertyForm").reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred while adding the property.');
+            });
+        });
+    </script>
+
+<script>
+    document.getElementById('propertyForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const form = document.getElementById('propertyForm');
+      const formData = new FormData(form);
+
+      // Send the form data to the server using Fetch API
+      fetch('/properties', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.text())
+        .then(result => {
+          // Handle the server response
+          console.log(result);
+          // Optionally, redirect or show a success message to the user
+        })
+        .catch(error => {
+          // Handle errors
+          console.error(error);
+        });
+    });
+  </script>
+    
+</body>
+</html>

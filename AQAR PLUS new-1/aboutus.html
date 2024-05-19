@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="style/Styles.css"> 
+    
+</head>
+<body>
+
+  <!-- NavBar-->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #D2B48C">
+    <div class="navbar-brand">
+      <img src="photos/LOGO-NOBG.png" class="AQARLOGO" alt="LOGO1" style="width: 160px; height: 160px;">
+    </div>
+    <div class="container">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav" id="navbar-list">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html" style="color: white;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html" style="color: white;">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="properties.html" style="color: white;">Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html" style="color: white;">About Us</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="viewreview.html" style="color: white;">view Review</a>
+          </li>
+          <li class="nav-item" id="signup-link">
+            <a class="nav-link" href="signup.html" style="color: white;">Signup/Login</a>
+          </li>
+          <li class="nav-item" id="profile-link" style="display: none;">
+            <a class="nav-link" href="profile.html" style="color: white;">Manage Profile</a>
+          </li>
+           <li class="nav-item" id="logout-link" style="display: none;">
+   <a class="nav-link" href="login.html" onclick="logout()" style="color: white;">Logout</a>
+   </li>
+   
+        </ul>
+      </div>
+    </div>
+   </nav>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Welcome to AQAR-PLUS</h1>
+      <p class="lead">Your one-stop platform for buying, selling, and connecting with architects and interior designers. <br> 
+        We are committed to promoting innovation, sustainability, and collaboration in the real estate and design sectors, <br>
+        aligning with the goals and aspirations of<b> Saudi Vision  2030</b>.
+      </p>
+    </div>
+  </div>
+
+   <!--================== Overview Section ==================-->
+   <section id="home">
+    <div class="home-left">
+        <img src="https://www.luxurious-studio.com/wp-content/uploads/2020/01/Small-House-Designs-in-Saudi-Arabia-7.jpg">
+    </div>
+    <div class="home-right">
+        <h2 class="home-heading"> AQAR PLUS Overview </h2>
+        <p class="home-para"> Experience a new level of productivity with Aqar Plus. Our innovative platform is designed to help
+            you grow up your workflow speed and maximize efficiency. Whether you are a property advertiser or seeking the perfect real estate opportunity, Aqar Plus provides the professionals you need to streamline 
+            your processes. With advanced search capabilities, a vast network of professionals, and cutting-edge technology,
+            Say goodbye to time-consuming tasks and welcome a seamless experience that accelerates your workflow.<br>
+            <b>Join Aqar Plus today and unlock the potential to achieve more in less time.</b>
+        </p>
+    </div>
+</section>
+
+<!--================== Workflow Section  ==================-->
+<section class="vision1">
+    <h2 id="title"> Empowering Saudi Talents and Supporting Vision 2030</h2>
+    <p> 
+         At AQAR Plus, we are proud to wholeheartedly support Saudi talents and embrace the visionary <br>
+         goals of <b>Saudi Arabia's Vision 2030</b>. As a leading property finding and services provider, <br>
+        we are committed to empowering local talents by offering them ample opportunities for growth and <br>
+        success. We prioritize collaborations with Saudi professionals, from real estate agents to <br>
+        designers and developers, fostering a vibrant ecosystem that promotes their skills and expertise. <br>
+        By championing Saudi talents, we contribute to the diversification of the economy, the advancement <br>
+        of the real estate sector, and the overall realization of <b>Vision 2030's </b> objectives.
+    </p>
+    <div id="try">
+  <img id="visionpic" src="https://saudi.tpg.media/wp-content/uploads/2021/09/shutterstock_1645989721-1170-1.jpg" width="600px"> 
+</div>
+</section>
+
+
+<!--================== Goal Section Starts from Here ==================-->
+<section id="goal">
+    <div class="goal-left">
+        <h2>Our Goals</h2>
+        <ul>
+            <li> Achieve a diverse Saudi workforce, contributing to local job market growth.</li>
+            <li> Expand reach to a wide population through strategic marketing and partnerships.</li>
+            <li> Streamline the property search process.</li>
+            <li> Promote and empower local real estate professionals.</li>
+            <li> Deliver exceptional customer service.</li>
+        </ul>
+        
+    </div>
+    <div class="goal-right">
+        <img src="https://mediafiles.solutiontree.com/catalog/product/cache/cace7579961b0787672fc0b0417cf6e3/p/d/pd-long-term_1_2.png" alt="" width="100" height="200">
+    </div>
+</section>
+
+
+
+  <!--Footer-->
+<footer class="text-light text-center py-3"  style="background-color: #D2B48C">
+  <div class="container">
+    <a href="https://twitter.com/AqarPlus"><img src="photos/x.png" width="50" height="30"></a> 
+    <a href="mailto:aqarplus.contactus@gmail.com"><img src="photos/mail.png" width="50" height="35"></a>
+    <a href="https://alvo.chat/4t9f"><img src="photos/WhatsappLogo.png" width="50" height="35"></a>
+    <p>&copy; 2024 AQAR-PLUS. All rights reserved.</p> 
+  </div>
+</footer>
+
+   <!-- Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <script src="main.js"></script>
+   
+</body>
+</html>
+
+

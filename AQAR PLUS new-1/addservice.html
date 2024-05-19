@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Service</title>
+  <style>
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #E5D3B3; }
+
+    .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color:#fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  }
+
+    h1 { text-align: center; }
+   label { font-weight: bold;}
+
+   input[type="text"],
+   input[type="number"],
+   textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; }
+
+   button[type="submit"] {
+    width: 100%;       
+    padding: 10px;
+    background-color: #8B4513;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; }
+
+    button[type="submit"]:hover {
+    background-color:#8B4513;
+    color: #acacac;}
+  </style>
+</head>
+<body>
+
+
+
+  <div class="container">
+    <h2>Add Service</h2>
+    <form id="serviceForm">
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" name="image" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+      </div> 
+      <button type="submit">Add Service</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const serviceForm = document.getElementById('serviceForm');
+
+      serviceForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const image = document.getElementById('image').value;
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+
+        try {
+          const response = await fetch('http://localhost:3016/services', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ image, name, description })
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to add service.');
+          }
+
+          alert('Service added successfully!');
+          serviceForm.reset();
+          window.location.href = 'services.html'; // Redirect to viewproperties.html
+        } catch (error) {
+          console.error('Error adding service:', error);
+          alert('Failed to add service. Please try again.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+

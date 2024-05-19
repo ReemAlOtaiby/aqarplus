@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/Styles2.css">
+
+  <title>Services</title>
+ 
+</head>
+<body>
+
+      <!-- NavBar-->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #D2B48C">
+    <div class="navbar-brand">
+      <img src="photos/LOGO-NOBG.png" class="AQARLOGO" alt="LOGO1" style="width: 160px; height: 160px;">
+    </div>
+    <div class="container">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav" id="navbar-list">
+          <li class="nav-item">
+            <a class="nav-link" href="home.html" style="color: white;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html" style="color: white;">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="properties.html" style="color: white;">Properties</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.html" style="color: white;">About Us</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="viewreview.html" style="color: white;">view Review</a>
+          </li>
+          <li class="nav-item" id="signup-link">
+            <a class="nav-link" href="signup.html" style="color: white;">Signup/Login</a>
+          </li>
+          <li class="nav-item" id="profile-link" style="display: none;">
+            <a class="nav-link" href="profile.html" style="color: white;">Manage Profile</a>
+          </li>
+           <li class="nav-item" id="logout-link" style="display: none;">
+   <a class="nav-link" href="login.html" onclick="logout()" style="color: white;">Logout</a>
+   </li>
+   
+        </ul>
+      </div>
+    </div>
+   </nav>
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-6">Discover your dream team</h1>
+    <p class="lead"> of interior designers, contractors, architects, and skilled labors all in one place. <br>
+       Our website connects you with the professionals you need to bring your vision to life. <br>
+       <b>Easily</b> browse through their profiles, portfolios, and contact information!
+
+
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="add-property-btn">
+      <a href="addservice.html" class="btn btn-primary" id="add-property-button">Add Service</a>
+  </div>
+ 
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search services...">
+  </div>
+
+<div id="serviceList" class="row"></div>
+</div>
+
+
+<!--Footer-->
+<footer class="text-light text-center py-3"  style="background-color: #D2B48C">
+  <div class="container">
+    <a href="https://twitter.com/AqarPlus"><img src="photos/x.png" width="50" height="30"></a> 
+    <a href="mailto:aqarplus.contactus@gmail.com"><img src="photos/mail.png" width="50" height="35"></a>
+    <a href="https://alvo.chat/4t9f"><img src="photos/WhatsappLogo.png" width="50" height="35"></a>
+    <p>&copy; 2024 AQAR-PLUS. All rights reserved.</p> 
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ <script src="main.js"></script> 
+</body>
+</html>

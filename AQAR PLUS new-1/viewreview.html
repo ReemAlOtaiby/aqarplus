@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #E5D3B3;;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .reviews {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+
+    .review-card {
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-card p {
+      margin: 0;
+    }
+
+    .review-card-header {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="reviews" id="reviewsContainer">
+    <h2>Reviews</h2>
+    <div id="reviewsList"></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* For the properties page and the services page /*/
+
+
+body {
+    background-color: #E5D3B3; }
+    
+    .jumbotron {
+    background-color: #D2B48C;
+    color: #fff; }
+
+.topnav {
+    overflow: hidden;
+    }
+    .topnav input[type=text] {
+      display: flex;
+      align-items: center;
+      float: center;
+      padding: 6px;
+      border: none;
+      margin-top: 8px;
+      margin-right: 16px;
+      font-size: 17px;
+    height: 1cm;
+    width: 15cm;
+    }
+    .navbar-brand {
+      margin-right: auto; 
+    }
+    .search-bar {
+      flex-grow: 1; 
+       display: flex;
+      justify-content: center; 
+      margin-left: 150px;
+    }
+    
+    
+    .search-bar input[type=text] {
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+    width: 500px;}
+    .search-bar {
+    text-align: center;
+    margin-top: 20px;}
+    .navbar-nav {
+      margin-left: auto; 
+    }
+    .card {
+    margin-bottom: 20px;
+    height: 750px;
+    margin-top: 30px;}
+    
+    .card-img-top {
+    height: 400px;
+    object-fit: cover; }
+        
+    
+    #add-property-button{
+    text-align: right;
+    margin-bottom: 20px;
+    float: right;
+    }
+        
+    .add-property-btn a {
+    color: #fff;
+    background-color: #8B4513;}
+        
+    .add-property-btn a:hover {
+    color: #acacac;
+    background-color: #8B4513; }
+    
+    
+    .favorite-btn {
+        font-size: 24px;
+        color: #ccc; /* Light gray color for empty star */
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .favorite-btn.favorite-active {
+        color: red; /* Gold color for active/favorited state */
+    }
+    
